@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE Books</title>
+    <style>
+         body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://wizcounsel.s3.amazonaws.com/sample_document/pr104/prof1910/akw-red-book-product-catalogue-2018-contents.jpg'); 
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+        table,tr,td{
+                background-color: rgb(236, 176, 47);
+                border: 2px solid black;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .card button {
+                border: none;
+                outline: 0;
+                padding: 12px;
+                color: white;
+                background-color: #000;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                font-size: 18px;
+            }
+            .card button:hover {
+                opacity: 0.7;
+            }
+    </style>
+</head>
+
+<body>
+    <table style="width: 100%">
+        <tr>
+            <td><img src="C:\Users\astik\OneDrive\Pictures\Saved Pictures\download1.jpg"></td>
+            <td>Book Name:Programming in C<BR>Author:Herbert Schildt</td>
+            <td>Rs 600</td>
+            <td><p><button onclick="addToCart('Programming in C', 600)">Add to Cart</button></p></td>
+        </tr> 
+        <tr>
+            <td><img src="C:\Users\astik\OneDrive\Pictures\Saved Pictures\download2.jpg"></td>
+            <td>Book Name:Programming in Python<BR>Author:Chris Sebastian</td>
+            <td>Rs 600</td>
+            <td><p><button onclick="addToCart('Programming in Python', 600)">Add to Cart</button></p></td>
+        </tr> 
+        <tr>
+            <td><img src="C:\Users\astik\OneDrive\Pictures\Saved Pictures\download3.jpg"></td>
+            <td>Book Name:Programming in JAVA<BR>Author:Oreilly</td>
+            <td>Rs 600</td>
+            <td><p><button onclick="addToCart('Programming in JAVA', 600)">Add to Cart</button></p></td>
+        </tr>
+
+
+    </table>
+
+
+    <script>
+        function addToCart(bookName, price) {
+            var cartItem = {
+                bookName: bookName,
+                price: price
+            };
+
+            // Retrieve existing cart items from localStorage
+            var existingCart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+            // Add the new item to the cart
+            existingCart.push(cartItem);
+
+            // Store the updated cart back to localStorage
+            localStorage.setItem('shoppingCart', JSON.stringify(existingCart));
+
+            alert(`Added ${bookName} to cart. Price: ${price} Rs`);
+        }
+    </script>
+</body>
+
+</html>
+

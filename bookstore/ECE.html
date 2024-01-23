@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <style>
+             body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://wizcounsel.s3.amazonaws.com/sample_document/pr104/prof1910/akw-red-book-product-catalogue-2018-contents.jpg'); 
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+            table,tr,td{
+                background-color: rgb(236, 176, 47);
+                border: 2px solid black;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .card button {
+                border: none;
+                outline: 0;
+                padding: 12px;
+                color: white;
+                background-color: #000;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                font-size: 18px;
+            }
+            .card button:hover {
+                opacity: 0.7;
+            }
+
+        </style>
+    </head>
+    <body>
+        <table style="width: 100%">
+            <tr>
+                <td><img src="C:\Users\astik\OneDrive\Pictures\Saved Pictures\71hNmPY-hrL._AC_UF1000,1000_QL80_.jpg" height="200px"></td>
+                <td>Book Name:Basics of ECE(First Semester)<BR>Author:Gnageshwar Rao</td>
+                <td>Rs 600</td>
+                <td><p><button onclick="addToCart('Basics of ECE(First Semester)', 600)">Add to Cart</button></p></td>
+            </tr> 
+            <tr>
+                <td><img src="C:\Users\astik\OneDrive\Pictures\Saved Pictures\71ZYGPjw5ML._AC_UF1000,1000_QL80_.jpg" height="200px"></td>
+                <td>Book Name:Handbook for Competitive examinations<BR>Author:Sususrula VS Suresh</td>
+                <td>Rs 800</td>
+                <td><p><button onclick="addToCart('Handbook for Competitive examinations', 600)">Add to Cart</button></p></td>
+            </tr> 
+            <tr>
+                <td><img src="C:\Users\astik\OneDrive\Pictures\Saved Pictures\ecet-books.jpeg" height="200px"></td>
+                <td>Book Name:ECET Competitive Book<BR>Author:Dhananjaya</td>
+                <td>Rs 600</td>
+                <td><p><button onclick="addToCart('ECET Competitive Book', 600)">Add to Cart</button></p></td>
+            </tr>
+            <tr>
+                <td><img src="C:\Users\astik\OneDrive\Pictures\Saved Pictures\ecet-electronics-communication-engineering-objective-type-with-original-imag8gkzx2zrgwu8.webp" height="200px"></td>
+                <td>Book Name:ECET Competitive Reference Book<BR>Author:Falcon</td>
+                <td>Rs 600</td>
+                <td><p><button onclick="addToCart('Competitive Reference Book', 600)">Add to Cart</button></p></td>
+            </tr>
+
+
+        </table>
+        <script>
+            function addToCart(bookName, price) {
+                var cartItem = {
+                    bookName: bookName,
+                    price: price
+                };
+    
+                // Retrieve existing cart items from localStorage
+                var existingCart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+    
+                // Add the new item to the cart
+                existingCart.push(cartItem);
+    
+                // Store the updated cart back to localStorage
+                localStorage.setItem('shoppingCart', JSON.stringify(existingCart));
+    
+                alert(`Added ${bookName} to cart. Price: ${price} Rs`);
+            }
+        </script>
+    </body>
+</html>

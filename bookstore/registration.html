@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://assets-news.housing.com/news/wp-content/uploads/2020/06/10201220/Frequently-asked-questions-on-property-registration-in-India-FB-1200x700-compressed.jpg'); 
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .login {
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input,
+        textarea {
+            width: calc(100% - 20px); /* Adjusted width to accommodate buttons */
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+
+        button {
+            display: inline-block;
+            width: 80px; /* Adjusted width for the "Enter" button */
+            height: 36px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function validateAndFocus(nextElementId, event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                var inputElement = document.getElementById(nextElementId);
+                if (inputElement) {
+                    inputElement.focus();
+                }
+            }
+        }
+
+        function validateEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Invalid email. Please enter a valid email address.');
+                return false;
+            }
+            return true;
+        }
+
+        function validateName(name) {
+            var nameRegex = /^[a-zA-Z]{6,}$/;
+            if (!nameRegex.test(name)) {
+                alert('Invalid name. Name should contain only alphabets and should not be less than 6 characters.');
+                return false;
+            }
+            return true;
+        }
+
+        function validatePhone(phone) {
+            var phoneRegex = /^\d{10,}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('Invalid phone number. Phone number should not be less than 10 characters and should contain only numbers.');
+                return false;
+            }
+            return true;
+        }
+
+        function validatePassword(password) {
+            if (password.length < 6) {
+                alert('Invalid password. Password should not be less than 6 characters.');
+                return false;
+            }
+            return true;
+        }
+
+        function validateAge(age) {
+            var ageRegex = /^\d+$/;
+            if (!ageRegex.test(age) || parseInt(age, 10) <= 0) {
+                alert('Invalid age. Age should be a positive integer.');
+                return false;
+            }
+            return true;
+        }
+
+        function validateForm() {
+            var nameInput = document.getElementById('name');
+            var passwordInput = document.getElementById('password');
+            var emailInput = document.getElementById('email');
+            var phoneInput = document.getElementById('phone');
+            var ageInput = document.getElementById('age');
+
+            var name = nameInput.value;
+            var password = passwordInput.value;
+            var email = emailInput.value;
+            var phone = phoneInput.value;
+            var age = ageInput.value;
+
+            if (!validateName(name) || !validateEmail(email) || !validatePhone(phone) || !validatePassword(password) || !validateAge(age)) {
+                // If any validation fails, prevent form submission
+                return false;
+            }
+
+            // Additional validation and form submission logic can be added here
+
+            // If all validations pass, the form will be submitted
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="login">
+        <h1><b>REGISTRATION PAGE</b></h1>
+        <form action="#" onsubmit="return validateForm()">
+            <label for="name">NAME</label>
+            <input type="text" id="name" onkeypress="validateAndFocus('password', event)">
+            <button onclick="validateName(document.getElementById('name').value)">Enter</button>
+            <br>
+            <br>
+            <label for="password">PASSWORD</label>
+            <input type="password" id="password" onkeypress="validateAndFocus('email', event)">
+            <button onclick="validatePassword(document.getElementById('password').value)">Enter</button>
+            <br>
+            <br>
+            <label for="email">E-MAIL</label>
+            <input type="text" id="email" onkeypress="validateAndFocus('phone', event)">
+            <button onclick="validateEmail(document.getElementById('email').value)">Enter</button>
+            <br>
+            <br>
+            <label for="phone">PHONE-NUMBER</label>
+            <input type="text" id="phone" onkeypress="validateAndFocus('age', event)">
+            <button onclick="validatePhone(document.getElementById('phone').value)">Enter</button>
+            <br>
+            <br>
+            <h4>Gender</h4>
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <br>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+            <br>
+            <label><input type="radio" name="gender" value="other"> Other</label>
+            <br>
+            <br>
+            <label for="dob">DATE OF BIRTH</label>
+            <input type="date" id="dob">
+            <br>
+            <br>
+            <label for="languages">LANGUAGES KNOWN</label>
+            <input type="text" id="languages">
+            <br>
+            <br>
+            <label for="textarea">ADDRESS</label><br>
+            <textarea name="textarea" id="textarea" cols="40" rows="5">enter your address</textarea>
+            <br>
+            <br>
+            <input type="reset">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>

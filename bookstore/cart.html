@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/premium-photo/yellow-shopping-cart-with-clipping-path-yellow-background-minimal-idea-concept-3d-render_37817-717.jpg'); 
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+        table,tr,td{
+            border: 2px solid black;
+            width: 100%;
+        }
+        .cart{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        }
+        td{
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><center>Shopping Cart</center></h1>
+    <table>
+        <tr>
+            <th style="width: 50%;">Book Name</th>
+            <th style="width: 50%;">Price</th>
+        </tr>
+        <!-- Display cart items here using JavaScript -->
+    </table>
+
+    <script>
+        // Retrieve cart items from localStorage
+        var cartItems = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+        // Display cart items in the table
+        var table = document.querySelector('table');
+        cartItems.forEach(function (item) {
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.textContent = item.bookName;
+            cell2.textContent = item.price + ' Rs';
+        });
+    </script>
+</body>
+
+</html>
